@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cantinho da gigi e do ma</title>
+<title>Pra você, meu amor</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{--night:#1c0f1f;--wine:#4a1a35;--rose:#e9a3b8;--gold:#f4dba5;--ivory:#f8eff1;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -164,6 +164,25 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 .mp.add text{fill:var(--rose)}
 .place .row{display:flex;gap:.6rem;justify-content:center;margin-top:.8rem}
 .place .row button{padding:.25rem .8rem;font-size:.95rem}
+.letter-mode{display:flex;justify-content:center;margin-top:2.8rem}
+.sw{display:flex;align-items:center;gap:.7rem;padding:.4rem 1rem;font-size:1.05rem;border-radius:2rem}
+.sw:hover{background:none;color:var(--rose)}
+.sw .track{width:2.8rem;height:1.5rem;border-radius:1rem;border:1px solid var(--rose);position:relative;background:#ffffff10;flex:none}
+.sw .track i{position:absolute;top:2px;left:2px;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--rose);transition:transform .3s}
+.sw[aria-checked=true] .track i{transform:translateX(1.3rem)}
+.sw .lab{opacity:.55}.sw[aria-checked=false] .lab:first-child,.sw[aria-checked=true] .lab:last-child{opacity:1}
+.paper{margin-top:1.2rem;text-align:center}
+.paper .hint{font-size:1.3rem;margin-bottom:.8rem}
+.book2{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:6px;box-shadow:0 20px 60px #0009;scrollbar-width:none;background:#f8eff1}
+.book2::-webkit-scrollbar{display:none}
+.pg{position:relative;flex:0 0 100%;scroll-snap-align:center;margin:0;display:grid;place-items:center;cursor:zoom-in;will-change:transform}
+.pg::before{content:"";position:absolute;inset:0 auto 0 0;width:16px;background:linear-gradient(90deg,#0004,transparent);z-index:1;pointer-events:none}
+.pg img{display:block;width:100%;height:auto}
+.pgph{padding:4rem 1.2rem;color:#3a1a2a;font-family:Caveat,cursive;font-size:1.4rem}
+.dots{display:flex;gap:.5rem;justify-content:center;margin:.9rem 0 0}
+.dots i{width:.6rem;height:.6rem;border-radius:50%;background:#ffffff40}
+.dots i.on{background:var(--rose)}
+#toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;background:#1c0f1ff2;border:1px solid var(--rose);border-radius:2rem;padding:.5rem 1.2rem;font-size:1rem;text-align:center;max-width:90vw}
 </style>
 </head>
 <body>
@@ -217,16 +236,21 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     <div class="letter-wrap" id="letterWrap">
       <div class="letter-in">
         <div class="pin" aria-hidden="true">📌</div>
-        <div class="letter">
-    <p>Primeiramente, oiii amorrr, espero que vc esteja lendo essa cartinha igual nos filmes, com a minha voz na sua cabeça narrando o texto KKKKKKKKKKKKK. Nessa cartinha, basicamente, eu quero por meus sentimentos por vc.</p>
-    <p>Eu sei que eu sempre digo, mas acredito que não tem palavras pra descrever o quanto eu te amo. Um simples “eu te amo” ou um “eu te amo muitaoooo” não seriam o suficiente, então eu quero dizer alguns dos motivos do pq eu te amo, e eu queria dizer que eu te amo por corpo e alma. Eu amo cada detalhe em você: o seu sorriso, seu olhar, o seu cabelo, o seu rosto, o seu corpo, sua boca, suas unhas. Nossa, aquelas unhas de princesa! Quando eu vejo elas, eu tenho certeza de que você é uma princesa, e não qual quer uma, a minha princesa.</p>
-    <p>E como eu listei algumas coisas físicas, agora, falando de vc, sua personalidade: eu amo o seu jeito de ser, de ser brincalhona, sempre sorridente e feliz, de ser intensa cmg e dar o seu melhor pra demonstrar que me ama, a sua maturidade e jeito de pensar para resolver as coisas quando eu mesmo não consigo KKKKKKKKKKKK, por sempre estar do meu lado, e ser essa mulher incrível em cada detalhe, que apenas por existir me faz feliz e me tira um sorriso todo dia só de pensar em vc.</p>
-    <p>Vc pra mim é o significado de todas as coisas boas, de carinho, amor, fé, esperança, felicidade. Vish, eu poderia ficar o dia todo aqui dizendo, mas não ia caber aqui. Mas não tem problema, deixa isso pra futuras carinhas, e vc vai receber muitas ainda, acredita em mim KKKKKKKKKKK. Então, nunca mude seu jeitinho, amor, seja você, eu me apaixonei por como você é, cada detalhe seu.</p>
-    <p>E mais uma coisa, amor, ainda não acabou não. Lembra quando a gente teve aquela conversa de como nos começamos a gostar um do outro e a gente reviu, mas não sabemos o momento certo de quando nós apaixonamos? Eu não sei por vc, mas eu percebo agora que foi no momento em que entrei naquela sala e te vi pela primeira vez. Eu só não sabia ainda, pq nunca tínhamos conversados.</p>
-    <p>E lembra da nossa primeira conversa? Tentando puxar assunto pq era a atividade, a gente cheio de vergonha, sem saber oque perguntar, o saudades em KKKKKKKKK. E foi naquele momento que eu percebi uma conexão, por que daquele dia em diante, tudo começou a dar certo. Não é atoa que fomos se aproximando rápido, foi uma química, e ainda é uma química inexplicável. E acho que foi a única coisa que o Guto fez de bom, foi aquela misera daquele trabalho em dupla. E naquele momento em que fomos sorteados, eu percebi que não era só o destino, era mais que isso, era Deus!</p>
-    <p>E mal eu sabia que vc ia ser a pessoa mais importante pra mim. Fico feliz que você é as minhas orações, e sempre que eu vou dormir e acordar, eu oro pela gente, e sempre vou orar, pra Deus saber o quão grato eu sou de ter você. E aqui, nessa carta, eu prometo cuidar de vc, sempre estar do seu lado, te apoiar, e somar na sua vida. Você é o amor da minha vida e pra minha vida.</p>
-    <p>Ah, e mais uma coisa, por último, mas não menos importante: eu te amoooooooooooooooo muitooooo, do fundo do meu coração!!!!!! ♥</p>
+        <div class="letter-mode"><button class="sw" id="letSwitch" type="button" role="switch" aria-checked="false" aria-label="Alternar entre o texto e a carta de papel"><span class="lab">Texto</span><span class="track"><i></i></span><span class="lab">Carta de papel</span></button></div>
+        <div class="letter" id="modeText">
+    <p>Primeiramente, oiii amorrr, espero que você esteja lendo essa cartinha igual nos filmes, com a minha voz na sua cabeça narrando o texto. Nessa cartinha, basicamente, eu quero por meus sentimentos por você.</p>
+    <p>Eu sei que sempre digo, mas acredito que não tem palavras pra descrever o quanto eu te amo ♥. Um simples “eu te amo” ou um “eu te amo muitaooo” não seriam o suficiente, então eu quero dizer alguns dos motivos do porquê eu te amo ♥, e eu queria te dizer que eu te amo ♥ por corpo e alma. Eu amo cada detalhe em você: o seu sorriso ☺, seu olhar, o seu cabelo, o seu rosto, o seu corpo, sua boca, suas unhas. Nossa, aquelas unhas de princesa! Quando eu vejo elas, eu tenho a certeza de que você é uma princesa, e não qualquer uma, a minha princesa.</p>
+    <p>E como eu listei algumas coisas físicas, agora, falando de você, sua personalidade: eu amo o seu jeito de ser, de ser brincalhona, sempre sorridente e feliz, de ser intensa comigo ♥ e dar o seu melhor pra demonstrar que me ama, a sua maturidade e jeito de pensar para resolver as coisas quando eu mesmo não consigo, por sempre estar do meu lado, e ser essa mulher incrível em cada detalhe, que apenas por existir me faz feliz e me tira um sorriso todos os dias, até nos mais difíceis só de pensar em você.</p>
+    <p>Você pra mim é o significado de todas as coisas boas, de carinho, amor, fé, esperança, felicidade. Vish, eu poderia ficar o dia todo aqui dizendo, mas não ia caber aqui. Mas não tem problema, deixa isso pra futuras cartinhas, e você vai receber muitas ainda, acredita em mim. Então, nunca mude seu jeitinho, amor, seja você, eu me apaixonei por como você é, cada detalhe seu ♥.</p>
+    <p>E mais uma coisa amor, ainda não acabou não. Lembra quando a gente teve aquela conversa de como nós começamos a gostar um do outro e a gente reviu, mas não sabemos o momento certo de quando nós apaixonamos? Eu não sei por você, mas eu percebo agora que foi no momento em que entrei naquela sala e te vi pela primeira vez. Eu não sei por você, mas eu só não sabia ainda, porque nunca tínhamos conversado. E falando em conversa, lembra da nossa primeira conversa? Tentando puxar assunto porque era a atividade, a gente cheio de vergonha, sem saber o que perguntar, o saudades em. E foi naquele momento que eu percebi uma conexão, porque daquele dia em diante, tudo começou a dar certo.</p>
+    <p>Não é à toa que fomos se aproximando rápido, foi uma química, e ainda é uma química inexplicável. E acho que foi a única coisa que o Guto fez de bom, foi aquela miséria de trabalho em dupla. E naquele momento em que fomos sorteados, eu percebi que não era só destino, era mais que isso, era Deus! E mal eu sabia que você ia ser a pessoa mais importante pra mim. Fico feliz em saber que você é as minhas orações, e sempre que eu dormir e acordar, eu oro pela gente, e sempre vou orar, pra Deus saber o quão grato eu sou de ter você. E aqui, nessa carta, eu prometo cuidar de você, sempre estar do seu lado, te apoiar, e somar na sua vida, hoje e sempre. Você é o amor da minha vida e pra minha vida toda. ♥</p>
+    <p>Ah, e mais uma coisa, por último mas não menos importante: eu te amooooo muitooooo, do fundo do meu coração!!!!! Agora sim escaneia o QR code atrás da cartinha. Espero que goste do que eu fiz!!</p>
     </div>
+        <div class="paper" id="modePaper" hidden>
+          <p class="hint">arraste pro lado pra virar a página →</p>
+          <div class="book2" id="book2"></div>
+          <p class="dots" id="dots"></p>
+        </div>
         <button id="closeLetter" type="button">Guardar a carta</button>
       </div>
     </div>
@@ -308,6 +332,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     <p><button id="edSave" type="button">Colar no álbum ♥</button> <button id="edCancel" type="button">Cancelar</button></p>
   </div>
 </div>
+<div id="toast" hidden role="status"></div>
 <script>
 (function(){
   // ===== Edite aqui =====
@@ -315,6 +340,8 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   var GATE = null;
   // Fotos que já vêm coladas no álbum: {img:'fotos/1.jpg',date:'2026-10-11',place:'Lugar',text:'O que aconteceu'}
   var PRESET = [];
+  // Fotos da carta de papel (páginas, em ordem). Coloque os arquivos na pasta fotos.
+  var LETTER_PHOTOS = ['fotos/carta1.jpg','fotos/carta2.jpg'];
   // Mês em que o álbum começa (AAAA-MM). Se houver foto mais antiga, os meses anteriores aparecem sozinhos.
   var ALBUM_FROM = '2026-01';
   // Músicas: start e end em segundos (1:02 = 62). end:0 = vai até o fim da música.
@@ -325,6 +352,8 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     {title:'Nossa música',src:'musica2.mp3',start:0,end:0},
     {title:'Música que me lembra você 2',src:'musica3.mp3',start:0,end:0}
   ];
+  var SB_URL = 'https://vdickfvufddvebdciurt.supabase.co';
+  var SB_KEY = 'sb_publishable_qHL42zI8O-D-MH-n0uu4oA_ZFl8UHsM';
   var START = new Date('2026-10-11T23:05:00-03:00');
   // ======================
 
@@ -447,6 +476,31 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   eb.addEventListener('click', function(){ setLetter(!mail.classList.contains('open')); });
   $('closeLetter').addEventListener('click', function(){ setLetter(false); eb.scrollIntoView({block:'center'}); });
 
+  // carta de papel (fotos) em estilo de livro
+  var bk = $('book2'), dots = $('dots');
+  LETTER_PHOTOS.forEach(function(src,i){
+    var f = document.createElement('figure'); f.className = 'pg';
+    var im = new Image(); im.alt = 'Carta de papel, página '+(i+1); im.src = src;
+    im.addEventListener('error', function(){ var ph = document.createElement('div'); ph.className = 'pgph'; ph.textContent = 'Foto da carta (página '+(i+1)+') ainda não colocada'; f.textContent = ''; f.appendChild(ph); });
+    f.appendChild(im);
+    f.addEventListener('click', function(){ viewList(LETTER_PHOTOS.map(function(u,k){ return {img:u,date:'',place:'Carta de papel, página '+(k+1),text:''}; }), i); });
+    bk.appendChild(f);
+    var d = document.createElement('i'); if(!i){ d.className = 'on'; } dots.appendChild(d);
+  });
+  function tilt(){
+    var w = bk.clientWidth||1, idx = Math.round(bk.scrollLeft/w);
+    Array.prototype.forEach.call(bk.children, function(f,i){ f.style.transform = still ? '' : 'perspective(900px) rotateY('+(-((i*w-bk.scrollLeft)/w)*16)+'deg)'; });
+    Array.prototype.forEach.call(dots.children, function(x,i){ x.className = i===idx ? 'on' : ''; });
+  }
+  bk.addEventListener('scroll', tilt);
+  var sw = $('letSwitch');
+  sw.addEventListener('click', function(){
+    var on = sw.getAttribute('aria-checked')!=='true';
+    sw.setAttribute('aria-checked', on);
+    $('modeText').hidden = on; $('modePaper').hidden = !on;
+    if(on){ bk.scrollLeft = 0; tilt(); }
+  });
+
   // contador
   function tick(){
     var d = Math.max(0, Math.floor((Date.now()-START)/1000));
@@ -475,16 +529,42 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   ds.addEventListener('click', function(e){ if(e.target===ds && Date.now()-openedAt>500){ ds.hidden = true; } });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeLb(); ds.hidden = true; $('ed').hidden = true; $('pl').hidden = true; } });
 
-  function dbOpen(){ return new Promise(function(res,rej){ if(!window.indexedDB){ rej(); return; } var r = indexedDB.open('album-nosso',1); r.onupgradeneeded = function(){ r.result.createObjectStore('kv'); }; r.onsuccess = function(){ res(r.result); }; r.onerror = function(){ rej(r.error); }; }); }
-  function dbGet(){ return dbOpen().then(function(d){ return new Promise(function(res,rej){ var q = d.transaction('kv').objectStore('kv').get('state'); q.onsuccess = function(){ res(q.result); }; q.onerror = function(){ rej(q.error); }; }); }); }
-  function dbPut(v){ return dbOpen().then(function(d){ return new Promise(function(res,rej){ var t = d.transaction('kv','readwrite'); t.objectStore('kv').put(v,'state'); t.oncomplete = res; t.onerror = function(){ rej(t.error); }; }); }); }
-  var DB = {items:[],seeded:false,places:[]};
-  function save(){ return dbPut(DB).then(function(){ $('saveMsg').textContent = 'Salvo neste aparelho ✓'; }).catch(function(){ $('saveMsg').textContent = 'Não consegui salvar neste aparelho (aba privada?).'; }); }
+  // ===== nuvem (Supabase) =====
+  var DB = {items:[],places:[]}, LOADED = {}, EARLIEST = null, tt;
+  function say(t){ $('saveMsg').textContent = t; var e = $('toast'); e.textContent = t; e.hidden = false; clearTimeout(tt); tt = setTimeout(function(){ e.hidden = true; }, 2600); }
+  function sb(path,opt){
+    opt = opt || {}; opt.headers = Object.assign({apikey:SB_KEY,'Content-Type':'application/json'}, opt.headers||{});
+    return fetch(SB_URL+'/rest/v1/'+path, opt).then(function(r){
+      if(!r.ok){ throw new Error('http '+r.status); }
+      return r.status===204 ? null : r.text().then(function(t){ return t ? JSON.parse(t) : null; });
+    });
+  }
+  function toRow(x){ return {id:x.id, date:x.date, place:x.place, note:x.text, rot:Math.round(x.r), img:x.img}; }
+  function fromRow(r){ return {id:r.id, date:r.date, place:r.place||'', text:r.note||'', r:r.rot||0, img:r.img, x:0, y:0}; }
+  function cloud(p){ say('Salvando…'); return p.then(function(){ say('Salvo na nuvem ✓'); }).catch(function(){ say('Não consegui salvar na nuvem. Confira a internet e tente de novo.'); }); }
+  var UP = {method:'POST', headers:{Prefer:'resolution=merge-duplicates,return=minimal'}};
+  function pushItem(x){ return cloud(sb('album_items', {method:'POST', headers:UP.headers, body:JSON.stringify(toRow(x))})); }
+  function delItem(id){ return cloud(sb('album_items?id=eq.'+encodeURIComponent(id), {method:'DELETE'})); }
+  function pushPlace(q){ return cloud(sb('album_places', {method:'POST', headers:UP.headers, body:JSON.stringify(q)})); }
+  function delPlace(id){ return cloud(sb('album_places?id=eq.'+encodeURIComponent(id), {method:'DELETE'})); }
+  function loadMonth(key){
+    if(LOADED[key]){ return Promise.resolve(); }
+    var y = +key.slice(0,4), m = +key.slice(5), nx = m===12 ? (y+1)+'-01' : y+'-'+('0'+(m+1)).slice(-2);
+    return sb('album_items?select=*&date=gte.'+key+'-01&date=lt.'+nx+'-01&order=date.asc,created_at.asc').then(function(rows){
+      (rows||[]).forEach(function(r){
+        var it = fromRow(r), ix = -1;
+        DB.items.forEach(function(z,k){ if(z.id===it.id){ ix = k; } });
+        if(ix>-1){ DB.items[ix] = it; } else { DB.items.push(it); }
+      });
+      LOADED[key] = true;
+    });
+  }
 
   var MS = [], mi = 0;
   function buildMS(keep){
     var from = ALBUM_FROM;
     DB.items.forEach(function(x){ if(x.date.slice(0,7)<from){ from = x.date.slice(0,7); } });
+    if(EARLIEST && EARLIEST<from){ from = EARLIEST; }
     var n = new Date(), endK = n.getFullYear()*12+n.getMonth(), k0 = +from.slice(0,4)*12+(+from.slice(5)-1);
     MS = [];
     for(var k=k0; k<=endK; k++){ MS.push(Math.floor(k/12)+'-'+('0'+(k%12+1)).slice(-2)); }
@@ -540,8 +620,9 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     });
     if(dir){ var cc = $('calCard'); cc.classList.remove('tn','tp'); void cc.offsetWidth; cc.classList.add(dir>0 ? 'tn' : 'tp'); }
   }
-  $('mPrev').addEventListener('click', function(){ if(mi>0){ mi--; render(-1); } });
-  $('mNext').addEventListener('click', function(){ if(mi<MS.length-1){ mi++; render(1); } });
+  function goMonth(dir){ render(dir); loadMonth(MS[mi]).then(function(){ render(); }).catch(function(){ say('Não consegui carregar esse mês.'); }); }
+  $('mPrev').addEventListener('click', function(){ if(mi>0){ mi--; goMonth(-1); } });
+  $('mNext').addEventListener('click', function(){ if(mi<MS.length-1){ mi++; goMonth(1); } });
 
   function openDay(date){
     curDay = date; var p = date.split('-');
@@ -558,8 +639,8 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
       var be = document.createElement('button'); be.type = 'button'; be.textContent = '✎ Editar';
       be.addEventListener('click', function(){ ds.hidden = true; openEd(x); });
       var bd = document.createElement('button'); bd.type = 'button'; bd.textContent = 'Apagar';
-      bd.addEventListener('click', function(){ if(confirm('Tirar essa foto do álbum?')){ DB.items = DB.items.filter(function(z){ return z.id!==x.id; }); render(); openDay(date); save(); } });
-      bt.appendChild(be); bt.appendChild(bd);
+      bd.addEventListener('click', function(){ if(confirm('Tirar essa foto do álbum?')){ DB.items = DB.items.filter(function(z){ return z.id!==x.id; }); render(); openDay(date); delItem(x.id); } });
+      if(!x.fixed){ bt.appendChild(be); bt.appendChild(bd); }
       row.appendChild(im); row.appendChild(tx); row.appendChild(bt); box.appendChild(row);
     });
     ds.hidden = false; openedAt = Date.now();
@@ -592,17 +673,17 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
       DB.items.push(x); freshId = x.id;
     }
     addDate = null; buildMS(d.slice(0,7));
-    $('ed').hidden = true; render(); freshId = null; save();
+    $('ed').hidden = true; render(); freshId = null; pushItem(x); loadMonth(d.slice(0,7)).then(function(){ render(); }).catch(function(){});
     if(isNew){ burst(8,90); }
   });
+  DB.items = PRESET.map(function(q,i){ return {id:'p'+i, img:q.img, date:q.date, place:q.place, text:q.text, x:0, y:0, r:i%2 ? 4 : -4, fixed:true}; });
   buildMS(); render();
-  dbGet().then(function(v){ if(v && Array.isArray(v.items)){ DB = v; } DB.places = DB.places || []; }).catch(function(){}).then(function(){
-    if(!DB.seeded){
-      DB.items = DB.items.concat(PRESET.map(function(q,i){ return {id:'p'+i, img:q.img, date:q.date, place:q.place, text:q.text, x:0, y:0, r:i%2 ? 4 : -4}; }));
-      DB.seeded = true; if(PRESET.length){ save(); }
-    }
-    buildMS(); render(); drawMap();
-  });
+  $('saveMsg').textContent = 'Carregando o álbum…';
+  Promise.all([sb('album_items?select=date&order=date.asc&limit=1'), sb('album_places?select=*&order=created_at.asc')])
+    .then(function(r){ EARLIEST = r[0] && r[0][0] ? r[0][0].date.slice(0,7) : null; DB.places = r[1] || []; buildMS(MS[mi]); drawMap(); return loadMonth(MS[mi]); })
+    .then(function(){ $('saveMsg').textContent = 'Álbum na nuvem ✓'; })
+    .catch(function(){ $('saveMsg').textContent = 'Não consegui conectar ao álbum na nuvem.'; })
+    .then(function(){ render(); });
 
   // mapa que cresce: cada lugar novo abre mais espaço pro lado
   var STEP = 130, H = 260, mf = $('mapframe'), curP = 0, plEdit = null, PTS = [];
@@ -645,7 +726,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
       var row = document.createElement('div'); row.className = 'row';
       var be = document.createElement('button'); be.type = 'button'; be.textContent = '✎ Editar'; be.addEventListener('click', function(){ openPl(p); });
       var bd = document.createElement('button'); bd.type = 'button'; bd.textContent = 'Apagar';
-      bd.addEventListener('click', function(){ if(confirm('Tirar esse lugar do mapa?')){ DB.places = DB.places.filter(function(z){ return z.id!==p.id; }); curP = 0; drawMap(); save(); } });
+      bd.addEventListener('click', function(){ if(confirm('Tirar esse lugar do mapa?')){ DB.places = DB.places.filter(function(z){ return z.id!==p.id; }); curP = 0; drawMap(); delPlace(p.id); } });
       row.appendChild(be); row.appendChild(bd); box.appendChild(row);
     }
     if(scroll){ mf.scrollTo({left: PTS[i][0]-mf.clientWidth/2, behavior: still ? 'auto' : 'smooth'}); }
@@ -664,7 +745,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     var ix = -1;
     if(plEdit){ DB.places.forEach(function(z,k){ if(z.id===plEdit.id){ ix = k; } }); }
     if(ix>-1){ DB.places[ix] = q; } else { DB.places.push(q); ix = DB.places.length-1; }
-    $('pl').hidden = true; curP = PLACES.length + ix; drawMap(); pick(curP,true); save(); burst(6,90);
+    $('pl').hidden = true; curP = PLACES.length + ix; drawMap(); pick(curP,true); pushPlace(q); burst(6,90);
   });
   var dn = false, sx0 = 0, sl0 = 0;
   mf.addEventListener('pointerdown', function(e){ if(e.pointerType==='mouse'){ dn = true; sx0 = e.clientX; sl0 = mf.scrollLeft; } });
