@@ -196,6 +196,33 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 .rf.front b{display:block;font-size:2.4rem;line-height:1;font-weight:400}
 .rf.back{background:#f8eff1;color:#3a1a2a;transform:rotateY(180deg);font-family:Caveat,cursive;font-size:1.25rem;line-height:1.2;overflow:auto;overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.rc-in{transition:none}}
+/* ===== ajustes para celular ===== */
+html{-webkit-text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent}
+button,[role=button],.dy,.pol,.rc,.mp{touch-action:manipulation}
+.tabs{gap:.35rem;padding:.5rem .6rem;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.tabs button{flex:1;min-width:0;white-space:nowrap;padding:.4rem .3rem;font-size:1rem}
+#music{top:auto;bottom:calc(1rem + env(safe-area-inset-bottom,0px));right:1rem;width:3rem;height:3rem;box-shadow:0 4px 14px #0008;background:#1c0f1fe6}
+#player{top:auto;bottom:calc(4.6rem + env(safe-area-inset-bottom,0px));right:1rem}
+#toast{bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
+.lb{place-items:normal;overscroll-behavior:contain}
+.lb-card{margin:auto}
+.lb{background:#000000ee;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;max-width:24rem;margin:1rem auto 0}
+.count div{min-width:0;font-size:1rem}
+.count strong{font-size:clamp(1.8rem,9vw,2.6rem)}
+.end{padding-bottom:7rem}
+@media (max-width:480px){
+  section{padding:2.6rem 1.1rem}
+  .alb{padding-left:.6rem;padding-right:.6rem}
+  h2{font-size:1.75rem}
+  .letter{padding:1.5rem 1.1rem}
+  .rc{aspect-ratio:2/3}
+}
+@media (hover:none){
+  button:hover{background:none;color:var(--rose)}
+  .tabs button[aria-selected=true]:hover,.sg.on:hover{background:var(--rose);color:var(--night)}
+}
 </style>
 </head>
 <body>
@@ -220,8 +247,8 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 
 <div id="content">
 <nav class="tabs" role="tablist" aria-label="Seções">
-  <button type="button" role="tab" aria-selected="true" data-tab="hist">Nossa história</button>
-  <button type="button" role="tab" aria-selected="false" data-tab="mom">Momentos nossos</button>
+  <button type="button" role="tab" aria-selected="true" data-tab="hist">História</button>
+  <button type="button" role="tab" aria-selected="false" data-tab="mom">Momentos</button>
   <button type="button" role="tab" aria-selected="false" data-tab="lug">Lugares</button>
 </nav>
 
@@ -499,7 +526,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     b.addEventListener('click', function(){
       Array.prototype.forEach.call(tabs, function(t){ t.setAttribute('aria-selected', t===b); });
       ['hist','mom','lug'].forEach(function(k){ $('p-'+k).classList.toggle('on', k===b.getAttribute('data-tab')); });
-      window.scrollTo(0,0);
+      window.scrollTo({top:0,behavior:'auto'});
     });
   });
 
