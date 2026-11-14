@@ -183,6 +183,19 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 .dots i{width:.6rem;height:.6rem;border-radius:50%;background:#ffffff40}
 .dots i.on{background:var(--rose)}
 #toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;background:#1c0f1ff2;border:1px solid var(--rose);border-radius:2rem;padding:.5rem 1.2rem;font-size:1rem;text-align:center;max-width:90vw}
+.env::before{display:none}
+.env{perspective:800px}
+.env.open .flap{transform:rotateX(180deg);z-index:0}
+.env.open .seal2{opacity:0}
+.rcs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;perspective:1000px}
+.rc{aspect-ratio:3/4;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.rc-in{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.rc.on .rc-in{transform:rotateY(180deg)}
+.rf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:8px;display:grid;place-items:center;text-align:center;padding:.8rem;box-shadow:0 8px 20px #0007}
+.rf.front{background:linear-gradient(160deg,#6b2748,#3d1530);border:1px solid var(--rose);color:var(--rose)}
+.rf.front b{display:block;font-size:2.4rem;line-height:1;font-weight:400}
+.rf.back{background:#f8eff1;color:#3a1a2a;transform:rotateY(180deg);font-family:Caveat,cursive;font-size:1.25rem;line-height:1.2;overflow:auto;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){.rc-in{transition:none}}
 </style>
 </head>
 <body>
@@ -201,7 +214,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 
 <section id="envelope">
   <h1>Pra você, meu amor</h1>
-  <div class="env" id="env" role="button" tabindex="0" aria-label="Abrir o site"><div class="seal">♥</div></div>
+  <div class="env" id="env" role="button" tabindex="0" aria-label="Abrir o site"><span class="pocket"></span><span class="flap"></span><span class="seal2">♥</span></div>
   <p class="hint">toque pra abrir</p>
 </section>
 
@@ -257,13 +270,21 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   </div>
 </section>
 
+<section id="reasons">
+  <h2>Motivos pelos quais eu te amo</h2>
+  <p class="sub" id="rcCount"></p>
+  <p class="sub" style="font-size:1rem;margin:.4rem 0 1.4rem;opacity:.8">Toque numa cartinha pra virar. Segure 1 segundo pra editar.</p>
+  <div class="rcs" id="rcs"></div>
+  <div class="alb-foot"><button id="rsAdd" type="button">Escrever um motivo ♥</button></div>
+</section>
+
 <section class="only">
   <p class="big">Eu sou só seu amor, e você é só minha ♥</p>
 </section>
 
 <section class="only">
   <p class="hint">mensagem de deus</p>
-  <p class="big">O que Deus uniu, ninguém tira. 🙏</p>
+  <p class="big">O que Deus uniu, ninguém separa. 🙏</p>
 </section>
 
 <section class="end">
@@ -321,6 +342,13 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     <textarea id="plStory" placeholder="A história desse lugar" maxlength="300" rows="3" aria-label="História"></textarea>
     <input id="plLink" type="url" placeholder="Link do Google Maps (opcional)" aria-label="Link do mapa">
     <p><button id="plSave" type="button">Guardar no mapa ♥</button> <button id="plCancel" type="button">Cancelar</button></p>
+  </div>
+</div>
+<div class="lb" id="rs" hidden role="dialog" aria-modal="true" aria-label="Motivo">
+  <div class="lb-card">
+    <h2 id="rsTitle">Novo motivo</h2>
+    <textarea id="rsText" placeholder="Eu te amo porque…" maxlength="160" rows="4" aria-label="Motivo"></textarea>
+    <p><button id="rsSave" type="button">Guardar ♥</button> <button id="rsDel" type="button" hidden>Apagar</button> <button id="rsCancel" type="button">Cancelar</button></p>
   </div>
 </div>
 <div class="lb" id="ed" hidden role="dialog" aria-modal="true" aria-label="Foto do álbum">
@@ -449,11 +477,15 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 
   // abrir o site
   function openSite(){
+    var ev = $('env'); if(ev.classList.contains('open')){ return; }
+    ev.classList.add('open'); playSong();
+    setTimeout(showSite, still ? 0 : 800);
+  }
+  function showSite(){
     $('content').classList.add('open');
     $('envelope').style.display = 'none';
     window.scrollTo(0,0);
     mb.classList.add('show');
-    playSong();
     burst(14,120);
   }
   var env = $('env');
@@ -533,7 +565,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   $('lbNext').addEventListener('click', function(){ vIdx = (vIdx+1)%vList.length; showV(); });
   lb.addEventListener('click', function(e){ if(e.target===lb && Date.now()-openedAt>500){ closeLb(); } });
   ds.addEventListener('click', function(e){ if(e.target===ds && Date.now()-openedAt>500){ ds.hidden = true; } });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeLb(); ds.hidden = true; $('ed').hidden = true; $('pl').hidden = true; } });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeLb(); ds.hidden = true; $('ed').hidden = true; $('pl').hidden = true; $('rs').hidden = true; } });
 
   // ===== nuvem (Supabase) =====
   var DB = {items:[],places:[]}, LOADED = {}, EARLIEST = null, tt;
@@ -758,6 +790,52 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   window.addEventListener('pointermove', function(e){ if(dn){ mf.scrollLeft = sl0-(e.clientX-sx0); } });
   window.addEventListener('pointerup', function(){ dn = false; });
   drawMap();
+  // ===== motivos pelos quais eu te amo =====
+  var RS = [], RO = {}, rsEdit = null, rsFresh = null;
+  function drawReasons(){
+    var box = $('rcs'); box.textContent = '';
+    $('rcCount').textContent = RS.length ? RS.length + (RS.length===1 ? ' motivo' : ' motivos') + ', e vão chegando mais ♥' : 'Ainda não tem nenhum. Toque em “Escrever um motivo”.';
+    RS.forEach(function(r,i){
+      var c = document.createElement('div');
+      c.className = 'rc' + (r.id===rsFresh ? ' fresh' : '') + (RO[r.id] ? ' on' : '');
+      c.setAttribute('role','button'); c.tabIndex = 0; c.setAttribute('aria-pressed', !!RO[r.id]); c.style.setProperty('--r','0deg');
+      var inn = document.createElement('div'); inn.className = 'rc-in';
+      var f = document.createElement('div'); f.className = 'rf front';
+      var fb = document.createElement('b'); fb.textContent = '♥'; f.appendChild(fb); f.appendChild(document.createTextNode('motivo '+(i+1)));
+      var b = document.createElement('div'); b.className = 'rf back'; b.textContent = r.text;
+      inn.appendChild(f); inn.appendChild(b); c.appendChild(inn);
+      var flip = function(){ var on = !c.classList.contains('on'); c.classList.toggle('on', on); c.setAttribute('aria-pressed', on); RO[r.id] = on; };
+      press(c, flip, function(){ openRs(r); });
+      c.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flip(); } });
+      box.appendChild(c);
+    });
+  }
+  function openRs(r){
+    rsEdit = r || null;
+    $('rsTitle').textContent = r ? 'Editar motivo' : 'Novo motivo';
+    $('rsText').value = r ? r.text : ''; $('rsDel').hidden = !r;
+    $('rs').hidden = false; $('rsText').focus();
+  }
+  $('rsAdd').addEventListener('click', function(){ openRs(null); });
+  $('rsCancel').addEventListener('click', function(){ $('rs').hidden = true; });
+  $('rsSave').addEventListener('click', function(){
+    var t = $('rsText').value.trim(); if(!t){ $('rsText').focus(); return; }
+    var q = rsEdit || {id:'m'+Date.now()}; q.text = t;
+    if(!rsEdit){ RS.push(q); rsFresh = q.id; }
+    $('rs').hidden = true; drawReasons(); rsFresh = null;
+    cloud(sb('album_reasons', {method:'POST', headers:UP.headers, body:JSON.stringify({id:q.id, body:q.text})}));
+    burst(6,90);
+  });
+  $('rsDel').addEventListener('click', function(){
+    if(rsEdit && confirm('Apagar esse motivo?')){
+      var id = rsEdit.id; RS = RS.filter(function(z){ return z.id!==id; });
+      $('rs').hidden = true; drawReasons();
+      cloud(sb('album_reasons?id=eq.'+encodeURIComponent(id), {method:'DELETE'}));
+    }
+  });
+  drawReasons();
+  sb('album_reasons?select=*&order=created_at.asc').then(function(rows){ RS = (rows||[]).map(function(x){ return {id:x.id, text:x.body}; }); drawReasons(); })
+    .catch(function(){ $('rcCount').textContent = 'Não consegui carregar os motivos agora.'; });
 })();
 </script>
 </body>
