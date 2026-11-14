@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pra você, meu amor</title>
+<title>Cantinho da gigi e ma</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{--night:#1c0f1f;--wine:#4a1a35;--rose:#e9a3b8;--gold:#f4dba5;--ivory:#f8eff1;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -725,7 +725,12 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
 
   // mapa que cresce: cada lugar novo abre mais espaço pro lado
   var STEP = 130, H = 260, mf = $('mapframe'), curP = 0, plEdit = null, PTS = [];
-  function allPlaces(){ return PLACES.concat((DB.places||[]).map(function(q){ return {id:q.id,name:q.name,story:q.story,link:q.link,user:true}; })); }
+  function allPlaces(){
+    var ov = {}; (DB.places||[]).forEach(function(q){ ov[q.id] = q; });
+    var base = PLACES.map(function(p,i){ var o = ov['d'+i] || p; return {id:'d'+i, name:o.name, story:o.story, link:o.link, user:true, fixedDefault:true}; });
+    var extra = (DB.places||[]).filter(function(q){ return !/^d\d+$/.test(q.id); }).map(function(q){ return {id:q.id,name:q.name,story:q.story,link:q.link,user:true}; });
+    return base.concat(extra);
+  }
   function safeLink(u){ return /^https?:\/\//i.test(u||'') ? u : ''; }
   function drawMap(){
     var all = allPlaces(), n = all.length+1, W = Math.max(900, 100 + n*STEP), i;
@@ -765,7 +770,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
       var be = document.createElement('button'); be.type = 'button'; be.textContent = '✎ Editar'; be.addEventListener('click', function(){ openPl(p); });
       var bd = document.createElement('button'); bd.type = 'button'; bd.textContent = 'Apagar';
       bd.addEventListener('click', function(){ if(confirm('Tirar esse lugar do mapa?')){ DB.places = DB.places.filter(function(z){ return z.id!==p.id; }); curP = 0; drawMap(); delPlace(p.id); } });
-      row.appendChild(be); row.appendChild(bd); box.appendChild(row);
+      row.appendChild(be); if(!p.fixedDefault){ row.appendChild(bd); } box.appendChild(row);
     }
     if(scroll){ mf.scrollTo({left: PTS[i][0]-mf.clientWidth/2, behavior: still ? 'auto' : 'smooth'}); }
   }
@@ -783,7 +788,7 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     var ix = -1;
     if(plEdit){ DB.places.forEach(function(z,k){ if(z.id===plEdit.id){ ix = k; } }); }
     if(ix>-1){ DB.places[ix] = q; } else { DB.places.push(q); ix = DB.places.length-1; }
-    $('pl').hidden = true; curP = PLACES.length + ix; drawMap(); pick(curP,true); pushPlace(q); burst(6,90);
+    $('pl').hidden = true; curP = allPlaces().map(function(z){ return z.id; }).indexOf(q.id); drawMap(); pick(curP,true); pushPlace(q); burst(6,90);
   });
   var dn = false, sx0 = 0, sl0 = 0;
   mf.addEventListener('pointerdown', function(e){ if(e.pointerType==='mouse'){ dn = true; sx0 = e.clientX; sl0 = mf.scrollLeft; } });
