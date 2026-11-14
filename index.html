@@ -340,8 +340,8 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
   var GATE = null;
   // Fotos que já vêm coladas no álbum: {img:'fotos/1.jpg',date:'2026-10-11',place:'Lugar',text:'O que aconteceu'}
   var PRESET = [];
-  // Fotos da carta de papel (páginas, em ordem). Coloque os arquivos na pasta fotos.
-  var LETTER_PHOTOS = ['fotos/carta1.jpg','fotos/carta2.jpg'];
+  // Fotos da carta de papel (páginas, em ordem). Os arquivos ficam na mesma pasta do index.html.
+  var LETTER_PHOTOS = ['carta1.jpg','carta2.jpg'];
   // Mês em que o álbum começa (AAAA-MM). Se houver foto mais antiga, os meses anteriores aparecem sozinhos.
   var ALBUM_FROM = '2026-01';
   // Músicas: start e end em segundos (1:02 = 62). end:0 = vai até o fim da música.
@@ -351,6 +351,12 @@ textarea{font:inherit;padding:.6rem 1rem;border-radius:1rem;border:1px solid var
     {title:'Música que me lembra você',src:'musica1.mp3',start:202,end:234},
     {title:'Nossa música',src:'musica2.mp3',start:0,end:0},
     {title:'Música que me lembra você 2',src:'musica3.mp3',start:0,end:0}
+  ];
+  // Lugares do mapa: link é opcional (endereço do Google Maps)
+  var PLACES = [
+    {name:'A sala onde tudo começou',story:'Foi aqui que eu te vi pela primeira vez.',link:''},
+    {name:'Nosso primeiro encontro',story:'Conte aqui como foi esse dia.',link:''},
+    {name:'Nosso primeiro beijo',story:'Conte aqui como foi esse dia.',link:''}
   ];
   var SB_URL = 'https://vdickfvufddvebdciurt.supabase.co';
   var SB_KEY = 'sb_publishable_qHL42zI8O-D-MH-n0uu4oA_ZFl8UHsM';
